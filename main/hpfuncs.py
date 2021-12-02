@@ -18,7 +18,7 @@ inttoswing = dict(map(reversed, swingtoint.items()))
 statetoint = {"ON":48, "OFF":49}
 inttostate = dict(map(reversed, statetoint.items()))
 
-specialmodetoint = {"hi-power":1, "eco":3}
+specialmodetoint = {"off":0, "hi-power":1, "eco":3, "8c":4, "frpl1":32, "frpl2":48}
 inttostate = dict(map(reversed, specialmodetoint.items()))
 
 def checksum(msg,function):
