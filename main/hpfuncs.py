@@ -19,6 +19,7 @@ statetoint = {"ON":48, "OFF":49}
 inttostate = dict(map(reversed, statetoint.items()))
 
 specialmodetoint =  {"HiPower":1}
+inttostate = dict(map(reversed, specialmodetoint.items()))
 
 def checksum(msg,function):
     numb = 434 - msg - function
