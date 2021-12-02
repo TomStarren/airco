@@ -87,7 +87,7 @@ def sub_cb(topic, msg, retained):
             runwrite = False
 ################################################
 # specialmode
-    elif topic == topic_sub_mode:
+    elif topic == topic_sub_specialmode:
         try:
             values = hpfuncs.specialmodeControl(msg)
             if values == False:
