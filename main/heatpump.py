@@ -22,11 +22,11 @@ topic_sub_state =  b"" + config['maintopic'] + "/state/set"
 topic_sub_fanmode =  b"" + config['maintopic'] + "/fanmode/set"
 topic_sub_swingmode =  b"" + config['maintopic'] + "/swingmode/set"
 topic_sub_mode =   b"" + config['maintopic'] + "/mode/set"
-topic_sub_specialmode =   b"" + config['maintopic'] + "/specialmode/set"
+topic_sub_specialmode =  b"" + config['maintopic'] + "/specialmode/set"
 topic_sub_doinit =  b"" + config['maintopic'] + "/doinit"
 topic_sub_restart =  b"" + config['maintopic'] + "/restart"
 topic_sub_watchdog =  b"" + config['maintopic'] + "/watchdog"
-topics = [topic_sub_setp, topic_sub_state, topic_sub_specialmode, topic_sub_doinit, topic_sub_fanmode, topic_sub_mode, topic_sub_swingmode, topic_sub_restart, topic_sub_watchdog]
+topics = [topic_sub_setp, topic_sub_state, topic_sub_doinit, topic_sub_fanmode, topic_sub_mode, topic_sub_specialmode, topic_sub_swingmode, topic_sub_restart, topic_sub_watchdog]
 
 def int_to_signed(intval):
     if intval > 127:
@@ -86,20 +86,20 @@ def sub_cb(topic, msg, retained):
             hpfuncs.logprint(e)
             runwrite = False
 ################################################
-# specialmode
-    elif topic == topic_sub_specialmode:
+# fanmode
+    elif topic == topic_sub_fanmode:
         try:
-            values = hpfuncs.specialmodeControl(msg)
+            values = hpfuncs.fanControl(msg)
             if values == False:
                 runwrite = False
         except Exception as e:
             hpfuncs.logprint(e)
             runwrite = False
 ################################################
-# fanmode
-    elif topic == topic_sub_fanmode:
+# specialmode
+    elif topic == topic_sub_specialmode:
         try:
-            values = hpfuncs.fanControl(msg)
+            values = hpfuncs.specialControl(msg)
             if values == False:
                 runwrite = False
         except Exception as e:
@@ -202,6 +202,9 @@ async def receiver(client):
                         if(str(data[14]) == "163"):
                             swingmode = hpfuncs.inttoswing[int(data[15])]
                             await client.publish(config['maintopic'] + '/swingmode/state', str(swingmode), qos=1)
+                        if(str(data[14]) == "247"):
+                            specialmode = hpfuncs.inttospecialmode[int(data[15])]
+                            await client.publish(config['maintopic'] + '/specialmode/state', str(specialmode), qos=1)
                         if(str(data[14]) == "176"):
                             mode = hpfuncs.inttomode[int(data[15])]
                             # report actual mode when unit is running or "off" when it's not
