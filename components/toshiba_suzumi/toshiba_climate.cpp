@@ -389,10 +389,10 @@ ClimateTraits ToshibaClimateUart::traits() {
   traits.add_supported_custom_fan_mode(CUSTOM_FAN_LEVEL_5);
   traits.add_supported_custom_fan_mode(CUSTOM_FAN_LEVEL_QUIET);
 
-  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_OFF);
-  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_HI_POWER);
-  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_ECO);
-  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_SILENT);
+  traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_OFF);
+  traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_HI_POWER);
+  traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_ECO);
+  traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_SILENT);
   
   traits.set_visual_temperature_step(1);
   traits.set_visual_min_temperature(MIN_TEMP);
