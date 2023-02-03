@@ -74,21 +74,6 @@ const optional<SPECIAL> StringToSpecialMode(std::string mode) {
   }
 }
   
-const std::string IntToCustomSpecialMode(Special mode) {
-  switch (mode) {
-    case SPECIAL::OFF:
-      return CUSTOM_SPECIAL_MODE_OFF;
-    case SPECIAL::HI_POWER:
-      return CUSTOM_SPECIAL_MODE_HI_POWER;
-    case SPECIAL::ECO:
-      return CUSTOM_SPECIAL_MODE_ECO;
-    case SPECIAL::SILENT:
-      return CUSTOM_SPECIAL_MODE_SILENT;
-    default:
-      return "Unknown";
-  }
-}
-  
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode) {
   if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_100)) {
     return PWR_LEVEL::PCT_100;
