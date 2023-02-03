@@ -24,7 +24,7 @@ static const std::string CUSTOM_SPECIAL_MODE_ECO = "ECO";
 static const std::string CUSTOM_SPECIAL_MODE_SILENT = "Silent";
 
 enum class CustomFanModes { QUIET, LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, LEVEL_5, AUTO };
-enum class CustomSpecialMOdes { OFF, HI_POWER, ECO, SILENT };
+enum class CustomSpecialModes { OFF, HI_POWER, ECO, SILENT };
 
 // codes as reverse engineered from Toshiba AC communication with original Wifi module.
 enum class MODE { AUTO = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 };
