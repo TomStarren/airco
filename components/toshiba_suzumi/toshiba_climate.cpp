@@ -352,7 +352,7 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
     }
   }
   
-  if (call.get_custom_presets().has_value()) {
+  if (call.get_custom_preset().has_value()) {
     auto special_mode = *call.get_custom_preset();
     auto payload = StringToSpecialMode(special_mode);
     if (payload.has_value()) {
