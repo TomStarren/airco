@@ -354,10 +354,10 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
   
   if (call.get_custom_presets().has_value()) {
     auto special_mode = *call.get_custom_presets();
-    auto payload = StringToSpecialMode(fan_mode);
+    auto payload = StringToSpecialMode(special_mode);
     if (payload.has_value()) {
       ESP_LOGD(TAG, "Setting special mode to %s", special_mode);
-      this->set_custom_presets(fan_mode);
+      this->set_custom_preset_(special_mode);
       this->sendCmd(ToshibaCommandType::SPECIAL, static_cast<uint8_t>(payload.value()));
     }
   }
