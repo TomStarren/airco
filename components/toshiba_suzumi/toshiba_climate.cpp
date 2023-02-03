@@ -136,6 +136,7 @@ void ToshibaClimateUart::getInitData() {
   this->requestData(ToshibaCommandType::SWING);
   this->requestData(ToshibaCommandType::ROOM_TEMP);
   this->requestData(ToshibaCommandType::OUTDOOR_TEMP);
+  this->requestData(ToshibaCommandType::SPECIAL);
 }
 
 void ToshibaClimateUart::setup() {
@@ -226,6 +227,12 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
         ESP_LOGI(TAG, "Received fan mode: %s", fanMode.c_str());
         this->set_custom_fan_mode_(fanMode);
       }
+      break;
+    }
+    case ToshibaCommandType::SPECIAL: {
+      auto specialMode = IntToCustomSpecialMode(static_cast<SPECIAL>(value));
+      ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
+      this->set_custom_special_mode_(specialMode);
       break;
     }
     case ToshibaCommandType::SWING: {
@@ -344,6 +351,16 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
       this->sendCmd(ToshibaCommandType::FAN, static_cast<uint8_t>(payload.value()));
     }
   }
+  
+  if (call.get_custom_special_mode().has_value()) {
+    auto special_mode = *call.get_custom_special_mode();
+    auto payload = StringToSpecialMode(fan_mode);
+    if (payload.has_value()) {
+      ESP_LOGD(TAG, "Setting special mode to %s", special_mode);
+      this->set_custom_special_mode_(fan_mode);
+      this->sendCmd(ToshibaCommandType::SPECIAL, static_cast<uint8_t>(payload.value()));
+    }
+  }
 
   if (call.get_swing_mode().has_value()) {
     auto swing_mode = *call.get_swing_mode();
@@ -372,6 +389,11 @@ ClimateTraits ToshibaClimateUart::traits() {
   traits.add_supported_custom_fan_mode(CUSTOM_FAN_LEVEL_5);
   traits.add_supported_custom_fan_mode(CUSTOM_FAN_LEVEL_QUIET);
 
+  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_OFF);
+  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_HI_POWER);
+  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_ECO);
+  traits.add_supported_custom_special_mode(CUSTOM_SPECIAL_MODE_SILENT);
+  
   traits.set_visual_temperature_step(1);
   traits.set_visual_min_temperature(MIN_TEMP);
   traits.set_visual_max_temperature(MAX_TEMP);
