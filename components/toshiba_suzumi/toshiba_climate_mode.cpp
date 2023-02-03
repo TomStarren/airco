@@ -59,6 +59,20 @@ const optional<FAN> StringToFanLevel(std::string mode) {
     return nullopt;
   }
 }
+  
+const optional<SPECIAL> StringToSpecialMode(std::string mode) {
+  if (mode == CUSTOM_SPECIAL_MODE_OFF) {
+    return SPECIAL::OFF;
+  } else if (mode == CUSTOM_SPECIAL_MODE_HI_POWER) {
+    return SPECIAL::HI_POWER;
+  } else if (mode == CUSTOM_SPECIAL_MODE_ECO) {
+    return SPECIAL::ECO;
+  } else if (mode == CUSTOM_SPECIAL_MODE_SILENT) {
+    return SPECIAL::SILENT;
+  } else {
+    return nullopt;
+  }
+}
 
 const std::string IntToCustomFanMode(FAN mode) {
   switch (mode) {
@@ -74,6 +88,21 @@ const std::string IntToCustomFanMode(FAN mode) {
       return CUSTOM_FAN_LEVEL_4;
     case FAN::FANMODE_5:
       return CUSTOM_FAN_LEVEL_5;
+    default:
+      return "Unknown";
+  }
+}
+  
+const std::string IntToCustomSpecialMode(SPECIAL mode) {
+  switch (mode) {
+    case SPECIAL::OFF:
+      return CUSTOM_FAN_LEVEL_QUIET;
+    case SPECIAL::HI_POWER:
+      return CUSTOM_FAN_LEVEL_1;
+    case SPECIAL::ECO:
+      return CUSTOM_FAN_LEVEL_2;
+    case SPECIAL::SILENT:
+      return CUSTOM_FAN_LEVEL_3;
     default:
       return "Unknown";
   }
