@@ -79,8 +79,8 @@ const std::string IntToCustomFanMode(FAN mode) {
   }
 }
   
-const optional<SPECIAL> StringToSpecialMode(std::string mode) {
-  if (mode == CUSTOM_SPECIAL_MODE_OFF) {
+const optional<SPECIAL> StringToSpecialMode(const std::string &mode) {
+  if (str_equals_case_insensitive(mode, CUSTOM_SPECIAL_MODE_OFF)) {
     return SPECIAL::OFF;
   } else if (mode == CUSTOM_SPECIAL_MODE_HI_POWER) {
     return SPECIAL::HI_POWER;
