@@ -132,11 +132,11 @@ void ToshibaClimateUart::getInitData() {
   this->requestData(ToshibaCommandType::MODE);
   this->requestData(ToshibaCommandType::TARGET_TEMP);
   this->requestData(ToshibaCommandType::FAN);
+  this->requestData(ToshibaCommandType::SPECIAL);
   this->requestData(ToshibaCommandType::POWER_SEL);
   this->requestData(ToshibaCommandType::SWING);
   this->requestData(ToshibaCommandType::ROOM_TEMP);
   this->requestData(ToshibaCommandType::OUTDOOR_TEMP);
-  this->requestData(ToshibaCommandType::SPECIAL);
 }
 
 void ToshibaClimateUart::setup() {
@@ -232,7 +232,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
     case ToshibaCommandType::SPECIAL: {
       //auto specialMode = StringToSpecialMode(static_cast<SPECIAL>(value));
       //ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
-      ESP_LOGI(TAG, "Received special mode: %s", value);
+      ESP_LOGI(TAG, "Received special mode: test");
       //this->set_custom_preset_(specialMode);
       break;
     }
