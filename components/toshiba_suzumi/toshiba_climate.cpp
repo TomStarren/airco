@@ -136,6 +136,7 @@ void ToshibaClimateUart::getInitData() {
   this->requestData(ToshibaCommandType::SWING);
   this->requestData(ToshibaCommandType::ROOM_TEMP);
   this->requestData(ToshibaCommandType::OUTDOOR_TEMP);
+  this->requestData(ToshibaCommandType::SPECIAL);
 }
 
 void ToshibaClimateUart::setup() {
