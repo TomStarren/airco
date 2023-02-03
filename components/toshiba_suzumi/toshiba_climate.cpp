@@ -232,7 +232,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
     case ToshibaCommandType::SPECIAL: {
       auto specialMode = StringToCustomSpecialMode(static_cast<SPECIAL>(value));
       ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
-      this->set_custom_presets_(specialMode);
+      this->set_custom_preset_(specialMode);
       break;
     }
     case ToshibaCommandType::SWING: {
@@ -353,7 +353,7 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
   }
   
   if (call.get_custom_presets().has_value()) {
-    auto special_mode = *call.get_custom_presets();
+    auto special_mode = *call.get_custom_preset();
     auto payload = StringToSpecialMode(special_mode);
     if (payload.has_value()) {
       ESP_LOGD(TAG, "Setting special mode to %s", special_mode);
