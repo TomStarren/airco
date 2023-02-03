@@ -229,6 +229,17 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       }
       break;
     }
+    case ToshibaCommandType::SPECIAL: {
+      if (static_cast<SPECIAL>(value) == SPECIAL::OFF) {
+        ESP_LOGI(TAG, "Received fan mode: Off");
+        this->set_fan_mode_(CLIMATE_FAN_AUTO);
+      } else {
+        auto specialMode = IntToCustomSpecialMode(static_cast<SPECIAL>(value));
+        ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
+        this->set_custom_special_mode_(specialMode);
+      }
+      break;
+    }
     case ToshibaCommandType::SWING: {
       auto swingMode = IntToClimateSwingMode(static_cast<SWING>(value));
       ESP_LOGI(TAG, "Received swing mode: %s", climate_swing_mode_to_string(swingMode));
