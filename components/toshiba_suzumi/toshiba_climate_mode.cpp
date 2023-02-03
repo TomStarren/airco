@@ -93,7 +93,7 @@ const optional<SPECIAL> StringToSpecialMode(std::string mode) {
   }
 }
   
-const std::string IntToCustomSpecialMode(SPECIAL mode) {
+const std::string IntToSpecialMode(SPECIAL mode) {
   switch (mode) {
     case SPECIAL::OFF:
       return CUSTOM_SPECIAL_MODE_OFF;
