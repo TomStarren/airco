@@ -45,6 +45,7 @@ void ToshibaClimateUart::start_handshake() {
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::DELAY, .delay = 2000});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = AFTER_HANDSHAKE[0]});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = AFTER_HANDSHAKE[1]});
+  enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = AFTER_HANDSHAKE[2]});
 }
 
 /**
@@ -229,7 +230,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       }
       break;
     }
-    case ToshibaCommandType::SPECIAL: {
+    case ToshibaCommandType::PRESET: {
       auto specialMode = StringToSpecialMode(static_cast<SPECIAL>(value));
       ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
       this->set_custom_preset_(specialMode);
