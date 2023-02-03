@@ -47,6 +47,7 @@ enum class ToshibaCommandType : uint8_t {
   TARGET_TEMP = 179,
   ROOM_TEMP = 187,
   OUTDOOR_TEMP = 190,
+  SPECIAL = 247,
 };
 
 const MODE ClimateModeToInt(climate::ClimateMode mode);
