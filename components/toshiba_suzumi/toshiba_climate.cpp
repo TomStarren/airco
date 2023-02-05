@@ -198,8 +198,6 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
   uint8_t length = rawData.size();
   ToshibaCommandType sensor;
   uint8_t value;
-  
-  ESP_LOGI(TAG, "Received sensor:", sensor);
 
   switch (length) {
     case 15:  // response to requestData with the actual value of sensor/setting
@@ -234,8 +232,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
     case ToshibaCommandType::SPECIAL: {
       auto specialMode = IntToSpecialMode(static_cast<SPECIAL>(value));
       ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
-      //ESP_LOGI(TAG, "Received special mode: BLUB");
-      //this->set_custom_preset_(specialMode);
+      this->set_custom_preset_(specialMode);
       break;
     }
     case ToshibaCommandType::SWING: {
