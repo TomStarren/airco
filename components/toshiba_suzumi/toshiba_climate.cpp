@@ -199,7 +199,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
   ToshibaCommandType sensor;
   uint8_t value;
   
-  ESP_LOGI(TAG, "Received data: %d", rawData);
+  ESP_LOGI(TAG, "Received sensor:", sensor);
 
   switch (length) {
     case 15:  // response to requestData with the actual value of sensor/setting
