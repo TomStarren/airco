@@ -84,8 +84,8 @@ const optional<SPECIAL> StringToSpecialMode(std::string mode) {
     return SPECIAL::OFF;
   } else if (mode == CUSTOM_SPECIAL_MODE_HI_POWER) {
     return SPECIAL::HI_POWER;
-  } else if (mode == CUSTOM_SPECIAL_MODE_ECO) {
-    return SPECIAL::ECO;
+  } else if (mode == CUSTOM_SPECIAL_MODE_ECONOMIE) {
+    return SPECIAL::ECONOMIE;
   } else if (mode == CUSTOM_SPECIAL_MODE_SILENT) {
     return SPECIAL::SILENT;
   } else {
@@ -99,8 +99,8 @@ const std::string IntToSpecialMode(SPECIAL mode) {
       return CUSTOM_SPECIAL_MODE_OFF;
     case SPECIAL::HI_POWER:
       return CUSTOM_SPECIAL_MODE_HI_POWER;
-    case SPECIAL::ECO:
-      return CUSTOM_SPECIAL_MODE_ECO;
+    case SPECIAL::ECONOMIE:
+      return CUSTOM_SPECIAL_MODE_ECONOMIE;
     case SPECIAL::SILENT:
       return CUSTOM_SPECIAL_MODE_SILENT;
     default:
