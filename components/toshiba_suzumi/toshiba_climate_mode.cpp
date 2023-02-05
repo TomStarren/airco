@@ -101,7 +101,7 @@ const std::string IntToSpecialMode(SPECIAL mode) {
       return CUSTOM_SPECIAL_MODE_HI_POWER;
     case SPECIAL::ECO:
       return CUSTOM_SPECIAL_MODE_ECO;
-    case SPECIAL::ECO:
+    case SPECIAL::SILENT:
       return CUSTOM_SPECIAL_MODE_SILENT;
     default:
       return "Unknown";
