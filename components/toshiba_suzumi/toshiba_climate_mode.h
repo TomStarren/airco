@@ -71,8 +71,8 @@ const ::std::string IntToCustomFanMode(FAN mode);
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode);
 const std::string IntToPowerLevel(PWR_LEVEL mode);
   
-const optional<SPECIAL> StringToSpecialMode(std::string mode);
-const ::std::string IntToSpecialMode(SPECIAL mode);
+const optional<SPECIAL> StringToSpecialMode(const std::string &mode);
+const std::string IntToSpecialMode(SPECIAL mode);
 
 }  // namespace toshiba_suzumi
 }  // namespace esphome
