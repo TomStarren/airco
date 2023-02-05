@@ -232,7 +232,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
     case ToshibaCommandType::SPECIAL: {
       if (static_cast<SPECIAL>(value) == SPECIAL::ECO) {
         ESP_LOGI(TAG, "Received special mode: ECO");
-        this->set_preset_mode_(CLIMATE_PRESET_ECO);
+        this->set_preset_(CLIMATE_PRESET_ECO);
       } else {
         auto specialMode = IntToSpecialMode(static_cast<SPECIAL>(value));
         ESP_LOGI(TAG, "Received special mode: %s", specialMode.c_str());
