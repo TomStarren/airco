@@ -20,11 +20,11 @@ static const std::string &CUSTOM_PWR_LEVEL_100 = "100 %";
 
 static const std::string &CUSTOM_SPECIAL_MODE_OFF = "Off";
 static const std::string &CUSTOM_SPECIAL_MODE_HI_POWER = "Hi-Power";
-static const std::string &CUSTOM_SPECIAL_MODE_ECO = "ECO";
+static const std::string &CUSTOM_SPECIAL_MODE_ENERGY_SAVER = "Energy-Saver";
 static const std::string &CUSTOM_SPECIAL_MODE_SILENT = "Silent";
   
 enum class CustomFanModes { QUIET, LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, LEVEL_5, AUTO };
-enum class CustomSpecialModes { OFF, HI_POWER, ECO, SILENT };
+enum class CustomSpecialModes { OFF, HI_POWER, ENERGY_SAVER, SILENT };
 
 // codes as reverse engineered from Toshiba AC communication with original Wifi module.
 enum class MODE { AUTO = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 };
@@ -40,7 +40,7 @@ enum class FAN {
 enum class SWING { OFF = 49, ON = 65 };
 enum class STATE { ON = 48, OFF = 49 };
 enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
-enum class SPECIAL { OFF = 0, HI_POWER = 1, ECO = 3, SILENT = 2 };
+enum class SPECIAL { OFF = 0, HI_POWER = 1, ENERGY_SAVER = 3, SILENT = 2 };
 
 enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
