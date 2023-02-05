@@ -397,7 +397,7 @@ ClimateTraits ToshibaClimateUart::traits() {
   traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_OFF);
   traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_HI_POWER);
   traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_SILENT);
-  traits.add_supported_preset(CLIMATE_PRESET_ECO);
+  traits.add_supported_custom_preset(CUSTOM_SPECIAL_MODE_ENERGY_SAVER);
   
   traits.set_visual_temperature_step(1);
   traits.set_visual_min_temperature(MIN_TEMP);
